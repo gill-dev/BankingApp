@@ -12,7 +12,7 @@
       "@assets/*": ["assets/*"],
       "@sections/*": ["sections/*"],
       "@icons/*": ["icons/*"],
-      "@/*": ["./src/*"],
+      "@/*": ["./src/*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

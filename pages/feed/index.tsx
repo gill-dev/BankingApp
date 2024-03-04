@@ -1,3 +1,4 @@
-import { TransactionFeed } from "@sections/feed";
+import { TransactionFeed } from '@sections/feed';
 
-export default TransactionFeed
+
+export default TransactionFeed;

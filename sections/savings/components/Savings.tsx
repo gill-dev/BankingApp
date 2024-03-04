@@ -1,10 +1,10 @@
-
-
 import { useAccount } from '@sections/account/hooks/useAccount';
 import { useCreateGoalMutation, useGetSavingsQuery } from '../api';
 import { useSavings } from '../hooks/useSavings';
 import { SavingsList } from './SavingsList';
 import { Button } from '@components/ui/button';
+import { Profile } from '@sections/feed/components/FeedSelector';
+import { TransactionFeed } from '@sections/feed';
 
 export const Savings = () => {
   const { selectedAccount } = useAccount();
@@ -15,18 +15,17 @@ export const Savings = () => {
   const { setSelectedSavings, selectedSavings } = useSavings();
   const [createGoal, result] = useCreateGoalMutation();
 
+  if (isLoading) {
+    return <div>Savings Loading...</div>;
+  }
+
   return (
-    <section className='profile'>
-      <div className="flex siz-full flex-col gap-4 p-4">
-        <h2 className="text-lg leading-6 font-medium text-gray-900 text-active-500 gap-4">Savings Goals</h2>
-      </div>
-      {data && (
-        <SavingsList
-    
-          selecteddGoalUid={selectedSavings?.savingsGoalUid}
-          savingsList={data}
-        />
-      )}
+    <>
+     <section className='profile'>
+        <Profile/>
+    </section>  
+    <section className="savings">
+      {data && <SavingsList onGoalSelect={setSelectedSavings} selecteddGoalUid={selectedSavings?.savingsGoalUid} savingsList={data} />}
       <div className="flex justify-between items-center gap-4 p-4">
         <Button
           onClick={() =>
@@ -45,7 +44,16 @@ export const Savings = () => {
           Generate a goal
         </Button>
       </div>
+    
     </section>
 
+    <section>
+    <section className='profile'>
+  
+  <TransactionFeed/>
+</section>
+    </section>
+   
+    </>
   );
 };

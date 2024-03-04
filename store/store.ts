@@ -4,6 +4,7 @@ import { authReducer } from '@sections/auth';
 import { accountReducer } from '@sections/account';
 import { savingsReducer } from '@sections/savings';
 import { baseApi } from './baseApi';
+import { feedReducer } from '@sections/feed';
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     auth: authReducer,
     account: accountReducer,
     savings: savingsReducer,
+    feed: feedReducer
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApi.middleware),
 });

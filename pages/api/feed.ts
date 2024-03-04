@@ -6,22 +6,21 @@ import { FeedItem } from '@sections/feed';
 
 const handler = nc<NextApiRequest, NextApiResponse>();
 
-
 const getTransactionFeed: RequestHandler<NextApiRequest, NextApiResponse> = async (req, res, next) => {
-
   try {
-    const { accountUid, categoryUid, minDate, maxDate } = req.query;
-    console.log(accountUid)
-    const { data: { feedItems }, } = await bankClient.get<{ feedItems: FeedItem[] }>(
-      BANKAPI.FEED.items.replace('$accountUid', accountUid as string).replace('$categoryUid', categoryUid as string),
+    const { accountUid, categoryUid, changesSince} = req.query;
+    console.log(accountUid);
+    const {
+      data: { feedItems },
+    } = await bankClient.get<{ feedItems: FeedItem[] }>(
+      BANKAPI.FEED.items.replace('$accountUid', accountUid as string).replace('$categoryUid', categoryUid as string).replace('$changesSince', changesSince as string),
       {
         params: {
-          minTransactionTimestamp: minDate,
-          maxTransactionTimestamp: maxDate,
+          changesSince: changesSince,
         },
       }
     );
-console.log()
+    console.log();
     return res.status(200).json({ feed: feedItems });
   } catch (error) {
     return res.status(500).json({ error });

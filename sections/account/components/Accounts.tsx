@@ -7,15 +7,8 @@ export const Accounts = () => {
   const { selectedAccount, setSelectedAccount } = useAccount();
 
   return (
-    
-      <section className="collection-heading">
-      
-      {data && (
-        <AccountList
-          selectedAccountId={selectedAccount?.accountUid}
-          accounts={data}
-        />
-      )}
+    <section className="collection-heading">
+      {data && <AccountList selectedAccountId={selectedAccount?.accountUid} accounts={data} />}
     </section>
   );
 };

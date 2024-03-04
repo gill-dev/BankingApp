@@ -40,31 +40,30 @@ export namespace NEXTAPI {
 }
 export const navLinks = [
   {
-    label: "Home",
-    route: "/",
-    icon: "/assets/icons/home.svg",
+    label: 'Home',
+    route: '/',
+    icon: '/assets/icons/home.svg',
   },
   {
-    label: "Current Account",
-    route: "/account",
-    icon: "/assets/icons/current.svg",
+    label: 'Current Account',
+    route: '/account',
+    icon: '/assets/icons/current.svg',
   },
   {
-    label: "Savings",
-    route: "/savings",
-    icon: "/assets/icons/savings.svg",
+    label: 'Savings',
+    route: '/savings',
+    icon: '/assets/icons/savings.svg',
   },
   {
-    label: "Profile",
-    route: "/profile",
-    icon: "/assets/icons/home.svg",
+    label: 'Profile',
+    route: '/profile',
+    icon: '/assets/icons/home.svg',
   },
 ];
 export const topLinks = [
   {
-    label: "Transaction Feed",
-    route: "/feed",
-    icon: "/assets/icons/home.svg",
+    label: 'Transaction Feed',
+    route: '/feed',
+    icon: '/assets/icons/home.svg',
   },
-
 ];

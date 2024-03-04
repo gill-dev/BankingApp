@@ -1,6 +1,6 @@
 import { converMinorUnits } from '@common/helpers';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from 'redux/store';
+import { RootState } from 'store/store';
 import { feedApi } from '../api';
 import { SetFeedDateRange } from '../types';
 
@@ -10,11 +10,10 @@ type FeedState = {
 
 export const feedSlice = createSlice({
   name: 'account',
-  initialState: { minDate: null, maxDate: null, roundUp: 0 } as FeedState,
+  initialState: { changesSince: null,  roundUp: 0 } as FeedState,
   reducers: {
     setFeedDateRange(state, action: PayloadAction<SetFeedDateRange>) {
-      state.minDate = action.payload.minDate;
-      state.maxDate = action.payload.maxDate;
+      state.changesSince = action.payload.changesSince;
     },
   },
   extraReducers: (builder) => {

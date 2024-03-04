@@ -14,3 +14,6 @@ export type FeedItem = {
   };
 };
 
+export type SetFeedDateRange = {
+  changesSince: string | null;
+};

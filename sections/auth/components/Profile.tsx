@@ -6,9 +6,5 @@ export const Profile: ReactFCWithChildren = ({ children }) => {
   const { data, error, isError, isLoading, isUninitialized } = useGetCurrentUserQuery();
   const { user } = useAuth();
 
-  return (
-    <section className="profile">
-     {`${user?.firstName} ${user?.lastName}`}
-    </section>
-  );
+  return <section className="profile">{`${user?.firstName} ${user?.lastName}`}</section>;
 };

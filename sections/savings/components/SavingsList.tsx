@@ -2,14 +2,8 @@ import { converMinorUnits, currencySmybols } from '@common/helpers';
 import clsx from 'clsx';
 import { FC } from 'react';
 import { ISavingsGoal } from '../types';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@components/ui/card';
+import { Button } from '@components/shared/Button';
 
 const styles = {
   selecected: 'border-indigo-500 ring-2 ring-indigo-500/50',
@@ -19,11 +13,11 @@ const styles = {
 interface Props {
   savingsList: ISavingsGoal[];
   selecteddGoalUid?: string;
-  
+  onGoalSelect: (goal: ISavingsGoal) => void;
+
 }
 
-export const SavingsList: FC<Props> = ({ savingsList, selecteddGoalUid }) => {
-
+export const SavingsList: FC<Props> = ({ savingsList, selecteddGoalUid, onGoalSelect }) => {
   return (
     <section className="flex flex-nowrap gap-6 p-2 overflow-auto brounded-lg">
       {savingsList.map((goal) => (
@@ -34,10 +28,9 @@ export const SavingsList: FC<Props> = ({ savingsList, selecteddGoalUid }) => {
             goal.savingsGoalUid === selecteddGoalUid ? styles.selecected : styles.unselected
           )}
         >
-          <Card >
+          <Card>
             <CardHeader>
-              <CardTitle className='text-active-500'>{goal.name}</CardTitle>
-
+              <CardTitle className="text-active-500">{goal.name}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-x-2 text-green-100">
@@ -51,16 +44,15 @@ export const SavingsList: FC<Props> = ({ savingsList, selecteddGoalUid }) => {
                   {converMinorUnits(goal.target.minorUnits).toFixed(2)}
                 </span>
               </div>
+              <div className="flex-1 min-w-0">
+                <Button onClick={()=>onGoalSelect(goal)}>Select</Button>
+        
+          </div>
             </CardContent>
-            <CardFooter>
-
-            </CardFooter>
+            <CardFooter></CardFooter>
           </Card>
-
         </div>
       ))}
-
-
     </section>
   );
 };

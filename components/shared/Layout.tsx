@@ -1,16 +1,14 @@
-
 import Sidebar from '@components/shared/Sidebar';
 import Header from './Header';
 
-const Layout = ({ children }) => {
-  
+const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <main className="root">
       <Sidebar />
-     
+
       <div className="root-container">
         <div className="wrapper">
-        <Header/>
+          <Header />
           {children}
         </div>
       </div>
